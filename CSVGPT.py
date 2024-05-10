@@ -14,8 +14,16 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
+#Sidebar
+st.sidebar.markdown("# CSVGPT | Open-Source 📊")
+st.sidebar.markdown("## Created by [EmadEldin Osman](https://github.com/Emad-Eldin-G)")
+st.sidebar.markdown("## To contribute, raise an issue on the [GitHub repo](https://github.com/Emad-Eldin-G/CSVGPT/issues)")
+st.sidebar.divider()
+
+
 #Header
-title = st.title("CSVGPT:H")
+title = st.title("CSVGPT")
 header = st.subheader("Blaze through datasets like a pro 🚀:H")
 
 #Help section
