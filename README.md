@@ -1,7 +1,7 @@
-# KaggleGPT (In progress)  
-<img src='https://github.com/Emad-Eldin-G/KaggleGPT/blob/main/icons8-kaggle-500.png' width=250>   
+# CSVGPT 📊🪄
 
-The tool you need as a Data Scientist 📊   
+The tool you need as a Data Scientist 📊
+Everyone can be a data pro with CSVGPT
 
 > Blaze through data sets and get quick insights, summaries, and graphs
 
