@@ -1,13 +1,10 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
 from time import sleep
 from analyzer import csvgpt
 
-#css hack through markdown
-#animated gradient background
-#make all text grey
+#css styling
 st.markdown(
     """
     <style>
@@ -64,7 +61,7 @@ if st.button("Analyze 🔮"):
             st.error("Please upload a valid CSV file")
     else:
         st.warning("Please upload a valid csv dataset first")
-    
+
     #Analyze dataset
     with st.spinner('Analyzing dataset... 🕵️‍♂️'):
         sleep(5)
@@ -74,7 +71,6 @@ if st.button("Analyze 🔮"):
         #Instantiate the csvgpt class
         csvgpt_instance = csvgpt(df)
         csvgpt_instance.analyze()
-
 
 
 #Ask questions about data (Uses Vana and LLMS)
