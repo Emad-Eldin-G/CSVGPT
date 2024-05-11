@@ -1,0 +1,28 @@
+2024-05-12 00:16:57 [INFO] Question: 
+            If there is any column that can be used, to calculate a max value from, that would be useful for the client to know,
+            what columns are these. 
+            Please answer in the following way:
+            [Col-num-X, Col-num-Y]
+            where the values in the array you give as answer are the col number only.
+            
+2024-05-12 00:16:57 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-12 00:16:57 [INFO] Prompt ID: 21607e8a-4838-467f-bf8c-ef2aa61a1cb4
+2024-05-12 00:16:57 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-12 00:16:57 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-12 00:16:57 [INFO] Executing Step 1: CacheLookup
+2024-05-12 00:16:57 [INFO] Executing Step 2: PromptGeneration
+2024-05-12 00:16:57 [ERROR] Pipeline failed on step 2: 'Index' object has no attribute '_format_native_types'
+2024-05-12 00:18:34 [INFO] Question: 
+            If there is any column that can be used, to calculate a max value from, that would be useful for the client to know,
+            what columns are these. 
+            Please answer in the following way:
+            [Col-num-X, Col-num-Y]
+            where the values in the array you give as answer are the col number only.
+            
+2024-05-12 00:18:34 [INFO] Running PandasAI with bamboo_llm LLM...
+2024-05-12 00:18:34 [INFO] Prompt ID: 4e2b54f7-e6b8-4c34-8637-a5d5c116a11f
+2024-05-12 00:18:34 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-12 00:18:34 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-12 00:18:34 [INFO] Executing Step 1: CacheLookup
+2024-05-12 00:18:34 [INFO] Executing Step 2: PromptGeneration
+2024-05-12 00:18:34 [ERROR] Pipeline failed on step 2: 'Index' object has no attribute '_format_native_types'
