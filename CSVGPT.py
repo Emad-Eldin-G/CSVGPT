@@ -78,19 +78,19 @@ if st.button("Analyze 🔮"):
     else:
         st.warning("Please upload a valid csv dataset first")
 
-if is_uploaded:
-    #Analyze dataset
-    with st.spinner('Analyzing dataset... 🕵️‍♂️'):
-        sleep(5)
-    with st.spinner('Doing our magic... ✨'):
-        sleep(5)
-    with st.spinner('This might take a while... 🕰️'):
-        #Instantiate the csvgpt class
-        csvgpt_instance = csvgpt(df)
-        csvgpt_instance.analyze()
-else:
-    #do nothing, the warning message will be sent from the catch error above
-    pass
+    if is_uploaded:
+        #Analyze dataset
+        with st.spinner('Analyzing dataset... 🕵️‍♂️'):
+            sleep(5)
+        with st.spinner('Doing our magic... ✨'):
+            sleep(5)
+        with st.spinner('This might take a while... 🕰️'):
+            #Instantiate the csvgpt class
+            csvgpt_instance = csvgpt(df)
+            csvgpt_instance.analyze()
+    else:
+        #do nothing, the warning message will be sent from the catch error above
+        pass
 
 
 #Ask questions about data (Uses Vana and LLMS)
