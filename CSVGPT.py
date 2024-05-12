@@ -26,7 +26,7 @@ st.sidebar.markdown("""
 - [Streamlit](https://streamlit.io/)
 - [Pandas](https://pandas.pydata.org/)
 - [NumPy](https://numpy.org/)  
-- [Pandasai](https://pypi.org/project/pandas-ai/)
+- [Pandasai](https://pandas-ai.com/)
 """)
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
 
@@ -52,7 +52,6 @@ st.divider()
 #Free gap
 st.markdown("<br>", unsafe_allow_html=True)
 
-
 #Upload dataset
 st.markdown("## Upload your dataset :file_folder:")
 uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
@@ -63,16 +62,16 @@ if uploaded_file is not None:
     is_uploaded = True
 
 
-#Free gap
-st.markdown("<br>", unsafe_allow_html=True)
-st.markdown("<br>", unsafe_allow_html=True)
-
-
 #Analyze button
-if st.button("Analyze 🔮"):
+if is_uploaded:
+    analyze_button = st.button("Analyze 🔮", disabled=False)
+else:
+    analyze_button = st.button("Analyze 🔮", disabled=True)
+
+if analyze_button:
     if is_uploaded:
         try:
-            df = pd.read_csv(uploaded_file)
+            read_csv = pd.read_csv(uploaded_file)
         except UnicodeDecodeError:
             st.error("Please upload a valid CSV file")
     else:
@@ -86,21 +85,25 @@ if st.button("Analyze 🔮"):
             sleep(5)
         with st.spinner('This might take a while... 🕰️'):
             #Instantiate the csvgpt class
-            csvgpt_instance = csvgpt(df)
+            csvgpt_instance = csvgpt(read_csv)
             csvgpt_instance.analyze()
     else:
         #do nothing, the warning message will be sent from the catch error above
         pass
 
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 
 #Ask questions about data (Uses Vana and LLMS)
 if is_uploaded:
     text_area = st.text_area("Ask CSVGPT a question about your data ✨", disabled=False)
+    submit_button = st.button("Ask CSVGPT", disabled=False)
 else:
     text_area = st.text_area("Ask CSVGPT a question about your data ✨", disabled=True)
+    submit_button = st.button("Ask CSVGPT", disabled=True)
 
 
-if st.button("Ask CSVGPT"):
+if submit_button:
     if is_uploaded:
         df = pd.read_csv(uploaded_file)
         st.write(df.head())

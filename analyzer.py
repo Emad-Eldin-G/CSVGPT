@@ -24,11 +24,14 @@ class csvgpt:
         data_row_count = len(self.__dataset)
         data_column_count = len(self.__dataset.columns)
         number_of_missing_values = self.__dataset.isnull().sum().sum()
+        number_of_not_missing_values = self.__dataset.notnull().sum().sum()
+        percentage_of_missing_values = (number_of_missing_values / (number_of_missing_values + number_of_not_missing_values)) * 100
 
         st.markdown(f"""
-            - **Number of rows**: {data_row_count}  
-            - **Number of columns**: {data_column_count}  
-            - **Number of missing values**: {number_of_missing_values}  
+            - There are **{data_row_count}** rows in your dataset
+            - There are **{data_column_count}** columns in your dataset
+            - **{round(percentage_of_missing_values, 2)}%** of the cell values are missing ({number_of_missing_values} missing values)
+            
         """)
 
     def max_min_range_mean_mode(self):
@@ -47,7 +50,3 @@ class csvgpt:
             """)
         
         st.write(max_col_num)
-
-        #Ask LLM which columns to analyze for max, min, range, mean, and mode
-        
-        
