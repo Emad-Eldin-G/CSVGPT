@@ -12,6 +12,7 @@ from pandasai.llm import OpenAI
 class csvgpt:
     def __init__(self, dataset) -> None:
         self.__dataset = dataset
+        self.__back_slash = "\\"
 
 
     def analyze(self):
@@ -37,14 +38,25 @@ class csvgpt:
 
 
     def __LLM_Analysis(self):
-        #Present the max, min, range, mean, and mode in a streamlit table with two columns
-        st.markdown("> LLM Analysis")
-
         os.environ["PANDASAI_API_KEY"] = "$2a$10$TYR1DHo20xqhWC2LI8pVze66Mswg4DfbHJwGRmUvXnjXfoIqqnnrS"
         llm = OpenAI(api_token="")
 
         df = pd.DataFrame(self.__dataset)
         pAI = SmartDataframe(df, config={"verbose": True, "llm": llm})
 
-        llm_analysis_response = pAI.chat("Give me a short summary of the dataset.")
-        st.write(llm_analysis_response)
+        llm_analysis_response = pAI.chat("What is the context of this dataset, and what is it trying to find/track based on the context of the dataset? Also format your responsee by adding ** before and after key pieces of information")
+        st.markdown(f"### Short summary of the dataset:")
+        st.markdown(f"{llm_analysis_response}")
+
+        llm_analysis_response = pAI.chat("What are the columns in the dataset, return the column names comma separated: column_1, column_2, column_3, ...")
+        columms_list = llm_analysis_response.split(",")
+        st.markdown(f"> The columns in the dataset are:")
+        for column in columms_list:
+            st.markdown(f"- {column}")
+
+        llm_analysis_response = pAI.chat("Please make a table for the min, max, mean, std, count, and unique values of the dataset")
+        st.markdown("> AI Analysis of the dataset")
+        st.markdown("> Includes: min, max, mean, std, count, and more")
+        st.table(llm_analysis_response)
+
+
