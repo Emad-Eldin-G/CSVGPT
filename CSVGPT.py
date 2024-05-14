@@ -4,6 +4,7 @@ import numpy as np
 from time import sleep
 from analyzer import csvgpt
 from PIL import Image
+import pandasai
 
 #css styling
 st.markdown(

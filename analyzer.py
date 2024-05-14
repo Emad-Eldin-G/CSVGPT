@@ -6,6 +6,7 @@ from time import sleep
 from pandasai import Agent, SmartDataframe
 from pandasai.llm import OpenAI
 from pandasai.exceptions import NoCodeFoundError
+
 #This class manages the analysis of the dataset
 #It uses the pandas library to read the dataset and analyze it
 #It also uses the snowflake arctic LLM model to generate insights, and know what parts
