@@ -11,7 +11,6 @@ from pandasai.exceptions import NoCodeFoundError
 #It also uses the snowflake arctic LLM model to generate insights, and know what parts
 #of the dataset to analyze
 
-@st.cache_data()
 class csvgpt:
     def __init__(self, dataset) -> None:
         self.__dataset = dataset
@@ -23,7 +22,6 @@ class csvgpt:
         self.__LLM_Analysis()
 
 
-    @st.cache_data()
     def __shape_of_dataset(self):
         st.markdown("> Shape of data")
         pd_data_describe = self.__dataset.describe()
@@ -41,10 +39,9 @@ class csvgpt:
         """)
 
 
-    @st.cache_data()
     def __LLM_Analysis(self):
-        os.environ["PANDASAI_API_KEY"] = ""
-        llm = OpenAI(api_token="")
+        os.environ["PANDASAI_API_KEY"] = os.environ.get("PANDASAI_API_KEY")
+        llm = OpenAI(api_token=os.environ.get("OPENAI_API_KEY"))
 
         df = pd.DataFrame(self.__dataset)
         pAI = SmartDataframe(df, config={"verbose": True, "llm": llm})
