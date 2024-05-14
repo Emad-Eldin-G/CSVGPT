@@ -48,6 +48,7 @@ class csvgpt:
         pAI = SmartDataframe(df, config={"verbose": True, "llm": llm})
 
         llm_analysis_response = pAI.chat("What is the context of this dataset, and what is it trying to find/track based on the context of the dataset? Also format your responsee by adding ** before and after key pieces of information")
+        llm_analysis_response = pAI.chat("Can you provide a more elaborate and detailed summary of the dataset?")
         st.markdown(f"### Short summary of the dataset:")
         st.markdown(f"{llm_analysis_response}")
 
@@ -85,5 +86,6 @@ class csvgpt:
 
         pAI.chat("I want to ask a question about the dataset")
         llm_analysis_response = pAI.chat(question)
+        llm_analysis_response = pAI.chat("Can you please elaborate on that?")
         return llm_analysis_response
 

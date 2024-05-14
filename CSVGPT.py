@@ -100,7 +100,7 @@ else:
     text_area = st.text_area("Ask CSVGPT a question about your data ✨", disabled=True)
     submit_button = st.button("Ask CSVGPT", disabled=True)
 
-def print_reponse_in_yield_delay(response, delay=0.25):
+def print_reponse_in_yield_delay(response, delay=0.15):
     for i in response:
         yield i
         sleep(delay)
@@ -108,6 +108,5 @@ def print_reponse_in_yield_delay(response, delay=0.25):
 if submit_button:
     with st.spinner('Let us see... 🕵️‍♂️'):
         sleep(3)
-        for i in print_reponse_in_yield_delay(csvgpt_instance.ask_question(text_area)):
-            st.write(i)
-            sleep(0.15)
+        reponse = csvgpt_instance.ask(text_area)
+        st.write(print_reponse_in_yield_delay(reponse))
