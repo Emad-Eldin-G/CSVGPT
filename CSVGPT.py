@@ -106,9 +106,8 @@ def print_reponse_in_yield_delay(response, delay=0.25):
         sleep(delay)
 
 if submit_button:
-    if is_uploaded:
-        ask_question_response = csvgpt_instance.ask_question(text_area)
-        for i in print_reponse_in_yield_delay(ask_question_response):
+    with st.spinner('Let us see... 🕵️‍♂️'):
+        sleep(3)
+        for i in print_reponse_in_yield_delay(csvgpt_instance.ask_question(text_area)):
             st.write(i)
-    else:
-        st.warning("Please upload a valid csv dataset first")
+            sleep(0.15)
