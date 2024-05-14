@@ -76,13 +76,14 @@ class csvgpt:
             st.markdown(llm_analysis_response)
 
     
-    def __ask_question(self, question):
+    def ask_question(self, question):
         os.environ["PANDASAI_API_KEY"] = os.environ.get("PANDASAI_API_KEY")
         llm = OpenAI(api_token=os.environ.get("OPENAI_API_KEY"))
 
         df = pd.DataFrame(self.__dataset)
         pAI = SmartDataframe(df, config={"verbose": True, "llm": llm})
 
+        pAI.chat("I want to ask a question about the dataset")
         llm_analysis_response = pAI.chat(question)
         return llm_analysis_response
 
