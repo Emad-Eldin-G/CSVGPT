@@ -48,7 +48,6 @@ class csvgpt:
         pAI = SmartDataframe(df, config={"verbose": True, "llm": llm})
 
         llm_analysis_response = pAI.chat("What is the context of this dataset, and what is it trying to find/track based on the context of the dataset? Also format your responsee by adding ** before and after key pieces of information")
-        llm_analysis_response = pAI.chat("Can you provide a more elaborate and detailed summary of the dataset?")
         st.markdown(f"### Short summary of the dataset:")
         st.markdown(f"{llm_analysis_response}")
 
@@ -77,7 +76,7 @@ class csvgpt:
             st.markdown(llm_analysis_response)
 
     
-    def ask_question(self, question):
+    def ask(self, question):
         os.environ["PANDASAI_API_KEY"] = os.environ.get("PANDASAI_API_KEY")
         llm = OpenAI(api_token=os.environ.get("OPENAI_API_KEY"))
 
@@ -86,6 +85,5 @@ class csvgpt:
 
         pAI.chat("I want to ask a question about the dataset")
         llm_analysis_response = pAI.chat(question)
-        llm_analysis_response = pAI.chat("Can you please elaborate on that?")
         return llm_analysis_response
 
