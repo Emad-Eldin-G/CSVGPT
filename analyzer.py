@@ -1,14 +1,17 @@
 import pandas as pd
 import streamlit as st
+from streamlit.errors import StreamlitAPIException
 import os
 from time import sleep
 from pandasai import Agent, SmartDataframe
 from pandasai.llm import OpenAI
+from pandasai.exceptions import NoCodeFoundError
 #This class manages the analysis of the dataset
 #It uses the pandas library to read the dataset and analyze it
 #It also uses the snowflake arctic LLM model to generate insights, and know what parts
 #of the dataset to analyze
 
+@st.cache_data()
 class csvgpt:
     def __init__(self, dataset) -> None:
         self.__dataset = dataset
@@ -20,6 +23,7 @@ class csvgpt:
         self.__LLM_Analysis()
 
 
+    @st.cache_data()
     def __shape_of_dataset(self):
         st.markdown("> Shape of data")
         pd_data_describe = self.__dataset.describe()
@@ -37,8 +41,9 @@ class csvgpt:
         """)
 
 
+    @st.cache_data()
     def __LLM_Analysis(self):
-        os.environ["PANDASAI_API_KEY"] = "$2a$10$TYR1DHo20xqhWC2LI8pVze66Mswg4DfbHJwGRmUvXnjXfoIqqnnrS"
+        os.environ["PANDASAI_API_KEY"] = ""
         llm = OpenAI(api_token="")
 
         df = pd.DataFrame(self.__dataset)
@@ -54,9 +59,21 @@ class csvgpt:
         for column in columms_list:
             st.markdown(f"- {column}")
 
+        
+        st.markdown("""
+                    > AI Analysis of the dataset
+                    > Includes: min, max, mean, std, count, and more
+        """)
         llm_analysis_response = pAI.chat("Please make a table for the min, max, mean, std, count, and unique values of the dataset")
-        st.markdown("> AI Analysis of the dataset")
-        st.markdown("> Includes: min, max, mean, std, count, and more")
-        st.table(llm_analysis_response)
-
+        try:
+            st.table(llm_analysis_response)
+        except StreamlitAPIException as e:
+            #Raise error to sentry to see what what type of data caused the error
+            pass
+            try:
+                st.write(llm_analysis_response)
+            except NoCodeFoundError as e:
+                st.markdown(llm_analysis_response)
+        except NoCodeFoundError as e:
+            st.markdown(llm_analysis_response)
 
