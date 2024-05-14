@@ -66,18 +66,16 @@ if uploaded_file is not None:
 #Analyze button
 if is_uploaded:
     analyze_button = st.button("Analyze 🔮", disabled=False)
+    try:
+        read_csv = pd.read_csv(uploaded_file)
+        csvgpt_instance = csvgpt(read_csv)
+    except Exception as e:
+        st.warning("Please upload a valid csv dataset")
+        analyze_button = st.button("Analyze 🔮", disabled=True)
 else:
     analyze_button = st.button("Analyze 🔮", disabled=True)
 
 if analyze_button:
-    if is_uploaded:
-        try:
-            read_csv = pd.read_csv(uploaded_file)
-        except UnicodeDecodeError:
-            st.error("Please upload a valid CSV file")
-    else:
-        st.warning("Please upload a valid csv dataset first")
-
     if is_uploaded:
         #Analyze dataset
         with st.spinner('Analyzing dataset... 🕵️‍♂️'):
@@ -86,7 +84,6 @@ if analyze_button:
             sleep(5)
         with st.spinner('This might take a while... 🕰️'):
             #Instantiate the csvgpt class
-            csvgpt_instance = csvgpt(read_csv)
             csvgpt_instance.analyze()
     else:
         #do nothing, the warning message will be sent from the catch error above
@@ -103,10 +100,15 @@ else:
     text_area = st.text_area("Ask CSVGPT a question about your data ✨", disabled=True)
     submit_button = st.button("Ask CSVGPT", disabled=True)
 
+def print_reponse_in_yield_delay(response, delay=0.25):
+    for i in response:
+        yield i
+        sleep(delay)
 
 if submit_button:
     if is_uploaded:
-        df = pd.read_csv(uploaded_file)
-        st.write(df.head())
+        ask_question_response = csvgpt_instance.ask_question(text_area)
+        for i in print_reponse_in_yield_delay(ask_question_response):
+            st.write(i)
     else:
         st.warning("Please upload a valid csv dataset first")
