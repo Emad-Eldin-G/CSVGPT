@@ -32,10 +32,12 @@ st.sidebar.markdown("""
 - [Pandasai](https://pandas-ai.com/)
 """)
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
-st.sidebar.image("static/pandas.png", width=50)
-st.sidebar.image("static/streamlit.png", width=50)
-st.sidebar.image("static/pandasai.png", width=50)
-st.sidebar.image("static/numpy.png", width=50)
+#Put images horizontally in the sidebar in a row in a container
+image1 = Image.open("images/pandasai.png")
+image2 = Image.open("images/streamlit.png")
+image3 = Image.open("images/numpy.png")
+image4 = Image.open("images/pandas.png")
+st.sidebar.image([image1, image2, image3, image4], width=100)
 
 #Header
 title = st.title("CSVGPT")
