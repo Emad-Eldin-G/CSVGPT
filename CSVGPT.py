@@ -37,7 +37,7 @@ image1 = Image.open("static/pandasai.png")
 image2 = Image.open("static/streamlit.png")
 image3 = Image.open("static/numpy.png")
 image4 = Image.open("static/pandas.png")
-st.sidebar.image([image1, image2, image3, image4], width=100)
+st.sidebar.image([image1, image2, image3, image4], width=40)
 
 #Header
 title = st.title("CSVGPT")
