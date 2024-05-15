@@ -32,7 +32,7 @@ st.sidebar.markdown("""
 - [Pandasai](https://pandas-ai.com/)
 """)
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
-st.sidebar.image("numpy.png", width=50)
+st.sidebar.image("static/numpy.png", width=50)
 
 #Header
 title = st.title("CSVGPT")
