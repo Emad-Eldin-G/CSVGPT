@@ -6,10 +6,7 @@ from analyzer import csvgpt
 from PIL import Image
 import pandasai
 
-def page_settings():
-    st.set_page_config(layout="wide")
-
-page_settings()
+st.set_page_config(page_title="CSVGPT", layout="wide", initial_sidebar_state="auto")
 
 #css styling
 st.markdown(
