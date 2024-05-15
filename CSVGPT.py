@@ -32,6 +32,9 @@ st.sidebar.markdown("""
 - [Pandasai](https://pandas-ai.com/)
 """)
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
+st.sidebar.image("static/pandas.png", width=50)
+st.sidebar.image("static/streamlit.png", width=50)
+st.sidebar.image("static/pandasai.png", width=50)
 st.sidebar.image("static/numpy.png", width=50)
 
 #Header
