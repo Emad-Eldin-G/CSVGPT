@@ -33,10 +33,10 @@ st.sidebar.markdown("""
 """)
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
 #Put images horizontally in the sidebar in a row in a container
-image1 = Image.open("images/pandasai.png")
-image2 = Image.open("images/streamlit.png")
-image3 = Image.open("images/numpy.png")
-image4 = Image.open("images/pandas.png")
+image1 = Image.open("static/pandasai.png")
+image2 = Image.open("static/streamlit.png")
+image3 = Image.open("static/numpy.png")
+image4 = Image.open("static/pandas.png")
 st.sidebar.image([image1, image2, image3, image4], width=100)
 
 #Header
