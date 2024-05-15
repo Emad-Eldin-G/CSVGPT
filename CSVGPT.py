@@ -33,12 +33,7 @@ st.sidebar.markdown("""
 """)
 st.sidebar.markdown("<br>", unsafe_allow_html=True)
 #Put images horizontally in the sidebar in a row in a container
-""" image2 = Image.open("static/streamlit.png")
-image1 = Image.open("static/pandasai.png")
-image4 = Image.open("static/pandas.png")
-image3 = Image.open("static/numpy.png")
-st.sidebar.image([image1, image2, image3, image4], width=55)
-"""
+
 #Header
 title = st.title("CSVGPT")
 header = st.subheader("Blaze through datasets like a pro 🚀:H")
