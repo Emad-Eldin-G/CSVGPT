@@ -1,10 +1,13 @@
 import streamlit as st
+from st_pages import Page, Section
+import pandasai
+
+from analyzer import csvgpt
+
 import pandas as pd
 import numpy as np
 from time import sleep
-from analyzer import csvgpt
 from PIL import Image
-import pandasai
 
 st.set_page_config(page_title="CSVGPT", page_icon="📊🪄", layout="wide", initial_sidebar_state="auto")
 
@@ -78,6 +81,9 @@ if is_uploaded:
 else:
     analyze_button = st.button("Analyze 🔮", disabled=True)
 
+#Used by analyzer.py to display responses from the analysis
+analyze_button_response = st.container()
+
 if analyze_button:
     if is_uploaded:
         #Analyze dataset
@@ -103,13 +109,10 @@ else:
     text_area = st.text_area("Ask CSVGPT a question about your data ✨", disabled=True)
     submit_button = st.button("Ask CSVGPT", disabled=True)
 
-def print_reponse_in_yield_delay(response, delay=0.15):
-    for i in response:
-        yield i
-        sleep(delay)
+#Used by analyzer.py to display responses from the chatbot
+chat_response = st.container()
 
 if submit_button:
     with st.spinner('Let us see... 🕵️‍♂️'):
-        sleep(3)
+        sleep(2)
         reponse = csvgpt_instance.ask(text_area)
-        st.write(print_reponse_in_yield_delay(reponse))
