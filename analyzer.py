@@ -24,6 +24,12 @@ class csvgpt:
 
 
     def __shape_of_dataset(self):
+        st.markdown("> Head of data")
+        st.write(self.__dataset.head())
+
+        st.markdown("> Tail of data")
+        st.write(self.__dataset.tail())
+        
         st.markdown("> Shape of data")
         pd_data_describe = self.__dataset.describe()
         data_row_count = len(self.__dataset)
