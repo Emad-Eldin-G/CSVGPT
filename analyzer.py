@@ -12,6 +12,7 @@ from pandasai.exceptions import NoCodeFoundError
 #It also uses the snowflake arctic LLM model to generate insights, and know what parts
 #of the dataset to analyze
 
+
 class csvgpt:
     def __init__(self, dataset) -> None:
         self.__dataset = dataset
@@ -29,7 +30,7 @@ class csvgpt:
 
         st.markdown("> Tail of data")
         st.write(self.__dataset.tail())
-        
+
         st.markdown("> Shape of data")
         pd_data_describe = self.__dataset.describe()
         data_row_count = len(self.__dataset)
@@ -56,19 +57,20 @@ class csvgpt:
         llm_analysis_response = pAI.chat("What is the context of this dataset, and what is it trying to find/track based on the context of the dataset? Also format your responsee by adding ** before and after key pieces of information")
         st.markdown(f"### Short summary of the dataset:")
         st.markdown(f"{llm_analysis_response}")
-
-        llm_analysis_response = pAI.chat("What are the columns in the dataset, return the column names comma separated: column_1, column_2, column_3, ...")
-        columms_list = llm_analysis_response.split(",")
-        st.markdown(f"> The columns in the dataset are:")
-        for column in columms_list:
-            st.markdown(f"- {column}")
-
         
         st.markdown("""
-                    > AI Analysis of the dataset
+                    > Statistical Analysis of the dataset  
                     > Includes: min, max, mean, std, count, and more
         """)
-        llm_analysis_response = pAI.chat("Please make a table for the min, max, mean, std, count, and unique values of the dataset")
+        llm_analysis_response = pAI.chat("What are the quantitative columns in the dataset, return the column names comma separated: column_1, column_2, column_3, ...")
+        #For each quantitative column, use pd to find the min, max, mean, std, count, and then add it to the dataframe
+        pd_df = []
+        quantitative_columns = llm_analysis_response.split(",")
+        for column in quantitative_columns:
+            pd_df.append(self.__dataset[column].describe())
+        
+        llm_analysis_response = pd.concat(pd_df, axis=1)
+
         try:
             st.table(llm_analysis_response)
         except StreamlitAPIException as e:
