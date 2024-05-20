@@ -12,7 +12,6 @@ from pandasai.exceptions import NoCodeFoundError
 #It also uses the snowflake arctic LLM model to generate insights, and know what parts
 #of the dataset to analyze
 
-
 class csvgpt:
     def __init__(self, dataset) -> None:
         self.__dataset = dataset
@@ -48,8 +47,7 @@ class csvgpt:
 
 
     def __LLM_Analysis(self):
-        os.environ["PANDASAI_API_KEY"] = os.environ.get("PANDASAI_API_KEY")
-        llm = OpenAI(api_token=os.environ.get("OPENAI_API_KEY"))
+        
 
         df = pd.DataFrame(self.__dataset)
         pAI = SmartDataframe(df, config={"verbose": True, "llm": llm})
@@ -62,7 +60,11 @@ class csvgpt:
                     > Statistical Analysis of the dataset  
                     > Includes: min, max, mean, std, count, and more
         """)
-        llm_analysis_response = pAI.chat("What are the quantitative columns in the dataset, return the column names comma separated: column_1, column_2, column_3, ...")
+        llm_analysis_response = pAI.chat("""What are the quantitative columns in the dataset,
+                return the column names comma separated: column_1, column_2, column_3, ... 
+                Note: Exclude columns like date, year, etc. As it does not matter to find the min, max, mean, std, count, etc.
+                Note: Also exclude columns that are not quantitative, like ID, Code Numbers, etc.
+                In a nutshell, only include columns that are quantitative AND relevant to what a data anlyst may need.""")
         #For each quantitative column, use pd to find the min, max, mean, std, count, and then add it to the dataframe
         pd_df = []
         quantitative_columns = llm_analysis_response.split(",")
@@ -71,27 +73,20 @@ class csvgpt:
         
         llm_analysis_response = pd.concat(pd_df, axis=1)
 
+        sleep(2)
         try:
             st.table(llm_analysis_response)
-        except StreamlitAPIException as e:
-            #Raise error to sentry to see what what type of data caused the error
-            pass
-            try:
-                st.write(llm_analysis_response)
-            except NoCodeFoundError as e:
-                st.markdown(llm_analysis_response)
-        except NoCodeFoundError as e:
-            st.markdown(llm_analysis_response)
+        except Exception as e:
+            st.warning("Could not display the statistical analysis of the dataset")
+            st.warning("Please try again")
 
     
     def ask(self, question):
-        os.environ["PANDASAI_API_KEY"] = os.environ.get("PANDASAI_API_KEY")
-        llm = OpenAI(api_token=os.environ.get("OPENAI_API_KEY"))
+        
 
         df = pd.DataFrame(self.__dataset)
         pAI = SmartDataframe(df, config={"verbose": True, "llm": llm})
 
-        pAI.chat("I want to ask a question about the dataset")
         llm_analysis_response = pAI.chat(question)
         return llm_analysis_response
 

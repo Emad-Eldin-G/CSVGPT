@@ -1,8 +1,10 @@
 import streamlit as st
 from st_pages import Page, Section
 import pandasai
+import os
 
 from analyzer import csvgpt
+import helpers
 
 import pandas as pd
 import numpy as np
@@ -92,19 +94,21 @@ def analyze_dataset(is_uploaded, uploaded_file):
 
 
 def ask_question(is_uploaded, csvgpt_instance):
+    chat_container = st.container()
     if is_uploaded:
-        text_area = st.text_area("Ask CSVGPT a question about your data ✨", disabled=False)
-        submit_button = st.button("Ask CSVGPT", disabled=False)
+        chat_container.write("### Chat with your Dataset 🤖")
+        text_area = chat_container.chat_input("Chat here", disabled=False)
     else:
-        text_area = st.text_area("Ask CSVGPT a question about your data ✨", disabled=True)
-        submit_button = st.button("Ask CSVGPT", disabled=True)
+        chat_container.write("### Chat with your Dataset 🤖")
+        text_area = chat_container.chat_input("Chat here", disabled=True)
 
-    if submit_button and is_uploaded:
-        with st.spinner('Let us see... 🕵️‍♂️'):
+    if text_area:
+        with st.spinner('Thinking... 🤔'):
             sleep(2)
-            response = csvgpt_instance.ask(text_area)
-            st.write(response)
-
+            response_from_bot = csvgpt_instance.ask(text_area)
+            bot = chat_container.chat_message("assistant")
+            bot.write("Response")
+            bot.write(response_from_bot)
 
 def main():
     configure_page()
