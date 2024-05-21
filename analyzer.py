@@ -47,7 +47,8 @@ class csvgpt:
 
 
     def __LLM_Analysis(self):
-        
+        os.environ["PANDASAI_API_KEY"] = os.environ.get("PANDASAI_API_KEY")
+        llm = OpenAI(api_token=os.environ.get("OPENAI_API_KEY"))
 
         df = pd.DataFrame(self.__dataset)
         pAI = SmartDataframe(df, config={"verbose": True, "llm": llm})
@@ -82,10 +83,11 @@ class csvgpt:
 
     
     def ask(self, question):
-        
+        os.environ["PANDASAI_API_KEY"] = os.environ.get("PANDASAI_API_KEY")
+        llm = OpenAI(api_token=os.environ.get("OPENAI_API_KEY"))
 
         df = pd.DataFrame(self.__dataset)
-        pAI = SmartDataframe(df, config={"verbose": True, "llm": llm})
+        pAI = Agent(df, config={"verbose": True, "llm": llm, "save_charts": False, "open_charts": False, "enable_cache": True})
 
         llm_analysis_response = pAI.chat(question)
         return llm_analysis_response

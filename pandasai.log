@@ -4528,3 +4528,433 @@ result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CS
         ```
 2024-05-20 23:39:16 [INFO] Executing Step 6: CodeExecution
 2024-05-20 23:39:16 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'
+2024-05-21 00:02:40 [INFO] Question: what was the highest pH level
+2024-05-21 00:02:40 [INFO] Running PandasAI with openai LLM...
+2024-05-21 00:02:40 [INFO] Prompt ID: 2ea6e6f5-a6af-425c-aac4-d7e3c04965a8
+2024-05-21 00:02:40 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 00:02:40 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 00:02:40 [INFO] Executing Step 1: CacheLookup
+2024-05-21 00:02:40 [INFO] Using cached response
+2024-05-21 00:02:40 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 00:02:40 [INFO] Executing Step 2: Skipping...
+2024-05-21 00:02:40 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 00:02:40 [INFO] Executing Step 3: Skipping...
+2024-05-21 00:02:40 [INFO] Executing Step 4: CachePopulation
+2024-05-21 00:02:40 [INFO] Executing Step 4: Skipping...
+2024-05-21 00:02:40 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 00:02:40 [INFO] 
+Code running:
+```
+highest_pH = max([df['pH'].max() for df in dfs])
+result = {'type': 'string', 'value': f'The highest pH level was {highest_pH}.'}
+        ```
+2024-05-21 00:02:40 [INFO] Executing Step 6: CodeExecution
+2024-05-21 00:02:40 [INFO] Executing Step 7: ResultValidation
+2024-05-21 00:02:40 [INFO] Answer: {'type': 'string', 'value': 'The highest pH level was 9.9.'}
+2024-05-21 00:02:40 [INFO] Executing Step 8: ResultParsing
+2024-05-21 00:03:01 [INFO] Question: Can you create a graph for the pH level in realtion to Salinity
+2024-05-21 00:03:01 [INFO] Running PandasAI with openai LLM...
+2024-05-21 00:03:01 [INFO] Prompt ID: 48eb7a4f-9e18-404a-a5d1-157872d1cceb
+2024-05-21 00:03:01 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 00:03:01 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 00:03:01 [INFO] Executing Step 1: CacheLookup
+2024-05-21 00:03:01 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 00:03:02 [INFO] Using prompt: <dataframe>
+dfs[0]:2371x8
+Date,Salinity (ppt),DissolvedOxygen (mg/L),pH,SecchiDepth (m),WaterDepth (m),WaterTemp (C),AirTemp (C)
+1993-09-13,0.18,3.7,,1.6,0.62,25.2,16.38888889
+,,8.1,7.3,,,,31.66666667
+1992-06-29,2.9,,8.2,1.75,0.925,8.5,8.777777778
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Can you create a graph for the pH level in realtion to Salinity
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-21 00:03:02 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 00:03:05 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-21 00:03:05 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:2371x8
+Date,Salinity (ppt),DissolvedOxygen (mg/L),pH,SecchiDepth (m),WaterDepth (m),WaterTemp (C),AirTemp (C)
+1993-09-13,0.18,3.7,,1.6,0.62,25.2,16.38888889
+,,8.1,7.3,,,,31.66666667
+1992-06-29,2.9,,8.2,1.75,0.925,8.5,8.777777778
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Can you create a graph for the pH level in realtion to Salinity
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-05-21 00:03:05 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Dataframe
+data = {'Date': ['1993-09-13', None, '1992-06-29'],
+        'Salinity (ppt)': [0.18, 8.1, 2.9],
+        'DissolvedOxygen (mg/L)': [3.7, 8.1, None],
+        'pH': [None, 7.3, 8.2]}
+df = pd.DataFrame(data)
+
+# Plotting pH level in relation to Salinity
+plt.figure(figsize=(10, 6))
+plt.scatter(df['Salinity (ppt)'], df['pH'], color='blue')
+plt.title('pH Level vs Salinity')
+plt.xlabel('Salinity (ppt)')
+plt.ylabel('pH')
+plt.grid(True)
+plt.show()
+
+# Declare result var
+result = {"type": "plot", "value": "pH_salinity_chart.png"}
+            ```
+            
+2024-05-21 00:03:05 [INFO] Executing Step 4: CachePopulation
+2024-05-21 00:03:05 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 00:03:05 [INFO] Saving charts to /Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png
+2024-05-21 00:03:05 [INFO] 
+Code running:
+```
+data = {'Date': ['1993-09-13', None, '1992-06-29'], 'Salinity (ppt)': [0.18, 8.1, 2.9], 'DissolvedOxygen (mg/L)': [3.7, 8.1, None], 'pH': [None, 7.3, 8.2]}
+df = pd.DataFrame(data)
+plt.figure(figsize=(10, 6))
+plt.scatter(df['Salinity (ppt)'], df['pH'], color='blue')
+plt.title('pH Level vs Salinity')
+plt.xlabel('Salinity (ppt)')
+plt.ylabel('pH')
+plt.grid(True)
+plt.show()
+result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+        ```
+2024-05-21 00:03:05 [INFO] Executing Step 6: CodeExecution
+2024-05-21 00:03:05 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'
+2024-05-21 00:04:16 [INFO] Question: Create a graph for pH in relation to Salinity
+2024-05-21 00:04:16 [INFO] Running PandasAI with openai LLM...
+2024-05-21 00:04:16 [INFO] Prompt ID: f62aa2c5-08d0-4f76-a7c4-e8cd8c6a373a
+2024-05-21 00:04:16 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 00:04:16 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 00:04:16 [INFO] Executing Step 1: CacheLookup
+2024-05-21 00:04:16 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 00:04:17 [INFO] Using prompt: <dataframe>
+dfs[0]:2371x8
+Date,Salinity (ppt),DissolvedOxygen (mg/L),pH,SecchiDepth (m),WaterDepth (m),WaterTemp (C),AirTemp (C)
+2005-06-16,4.7,10.7,6.9,0.45,0.72,23.8,18.9
+2007-07-05,1.5,9.4,6.25,,,26.1,-1.111111111
+,,,,0.88,0.92,,20.5
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Create a graph for pH in relation to Salinity
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-21 00:04:17 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 00:04:23 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-21 00:04:23 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:2371x8
+Date,Salinity (ppt),DissolvedOxygen (mg/L),pH,SecchiDepth (m),WaterDepth (m),WaterTemp (C),AirTemp (C)
+2005-06-16,4.7,10.7,6.9,0.45,0.72,23.8,18.9
+2007-07-05,1.5,9.4,6.25,,,26.1,-1.111111111
+,,,,0.88,0.92,,20.5
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Create a graph for pH in relation to Salinity
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-05-21 00:04:23 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Extracting relevant data for pH and Salinity from the dataframe
+pH_salinity_data = []
+for df in dfs:
+    pH_salinity_data.extend(df[['Salinity (ppt)', 'pH']].dropna().values.tolist())
+
+# Creating a new DataFrame for pH and Salinity
+df_pH_salinity = pd.DataFrame(pH_salinity_data, columns=['Salinity (ppt)', 'pH'])
+
+# Plotting the graph for pH in relation to Salinity
+plt.figure(figsize=(10, 6))
+plt.scatter(df_pH_salinity['Salinity (ppt)'], df_pH_salinity['pH'], color='blue', alpha=0.5)
+plt.title('pH in relation to Salinity')
+plt.xlabel('Salinity (ppt)')
+plt.ylabel('pH')
+plt.grid(True)
+plt.show()
+
+result = {"type": "plot", "value": "pH_salinity_chart.png"}
+            ```
+            
+2024-05-21 00:04:23 [INFO] Executing Step 4: CachePopulation
+2024-05-21 00:04:23 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 00:04:23 [INFO] Saving charts to /Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png
+2024-05-21 00:04:23 [INFO] 
+Code running:
+```
+pH_salinity_data = []
+for df in dfs:
+    pH_salinity_data.extend(df[['Salinity (ppt)', 'pH']].dropna().values.tolist())
+df_pH_salinity = pd.DataFrame(pH_salinity_data, columns=['Salinity (ppt)', 'pH'])
+plt.figure(figsize=(10, 6))
+plt.scatter(df_pH_salinity['Salinity (ppt)'], df_pH_salinity['pH'], color='blue', alpha=0.5)
+plt.title('pH in relation to Salinity')
+plt.xlabel('Salinity (ppt)')
+plt.ylabel('pH')
+plt.grid(True)
+plt.show()
+result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+        ```
+2024-05-21 00:04:23 [INFO] Executing Step 6: CodeExecution
+2024-05-21 00:04:23 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'
+2024-05-21 00:04:40 [INFO] Question: Create a graph for pH in relation to Salinity
+2024-05-21 00:04:40 [INFO] Running PandasAI with openai LLM...
+2024-05-21 00:04:40 [INFO] Prompt ID: 99f83369-7aa3-4899-afc8-a0bde716c270
+2024-05-21 00:04:40 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 00:04:40 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 00:04:40 [INFO] Executing Step 1: CacheLookup
+2024-05-21 00:04:40 [INFO] Using cached response
+2024-05-21 00:04:40 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 00:04:40 [INFO] Executing Step 2: Skipping...
+2024-05-21 00:04:40 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 00:04:40 [INFO] Executing Step 3: Skipping...
+2024-05-21 00:04:40 [INFO] Executing Step 4: CachePopulation
+2024-05-21 00:04:40 [INFO] Executing Step 4: Skipping...
+2024-05-21 00:04:40 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 00:04:40 [INFO] Saving charts to exports/charts/99f83369-7aa3-4899-afc8-a0bde716c270.png
+2024-05-21 00:04:40 [INFO] 
+Code running:
+```
+pH_salinity_data = []
+for df in dfs:
+    pH_salinity_data.extend(df[['Salinity (ppt)', 'pH']].dropna().values.tolist())
+df_pH_salinity = pd.DataFrame(pH_salinity_data, columns=['Salinity (ppt)', 'pH'])
+plt.figure(figsize=(10, 6))
+plt.scatter(df_pH_salinity['Salinity (ppt)'], df_pH_salinity['pH'], color='blue', alpha=0.5)
+plt.title('pH in relation to Salinity')
+plt.xlabel('Salinity (ppt)')
+plt.ylabel('pH')
+plt.grid(True)
+plt.show()
+result = {'type': 'plot', 'value': 'exports/charts/99f83369-7aa3-4899-afc8-a0bde716c270.png'}
+        ```
+2024-05-21 00:04:40 [INFO] Executing Step 6: CodeExecution
+2024-05-21 00:04:40 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: 'exports/charts/99f83369-7aa3-4899-afc8-a0bde716c270.png'
+2024-05-21 00:05:08 [INFO] Question: Create a graph for pH in relation to Salinity
+2024-05-21 00:05:08 [INFO] Running PandasAI with openai LLM...
+2024-05-21 00:05:08 [INFO] Prompt ID: b185cb5e-60d5-4ce4-bc6b-728e09f7b4fe
+2024-05-21 00:05:08 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 00:05:08 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 00:05:08 [INFO] Executing Step 1: CacheLookup
+2024-05-21 00:05:08 [INFO] Using cached response
+2024-05-21 00:05:08 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 00:05:08 [INFO] Executing Step 2: Skipping...
+2024-05-21 00:05:08 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 00:05:08 [INFO] Executing Step 3: Skipping...
+2024-05-21 00:05:08 [INFO] Executing Step 4: CachePopulation
+2024-05-21 00:05:08 [INFO] Executing Step 4: Skipping...
+2024-05-21 00:05:08 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 00:05:08 [INFO] Saving charts to exports/charts/b185cb5e-60d5-4ce4-bc6b-728e09f7b4fe.png
+2024-05-21 00:05:08 [INFO] 
+Code running:
+```
+pH_salinity_data = []
+for df in dfs:
+    pH_salinity_data.extend(df[['Salinity (ppt)', 'pH']].dropna().values.tolist())
+df_pH_salinity = pd.DataFrame(pH_salinity_data, columns=['Salinity (ppt)', 'pH'])
+plt.figure(figsize=(10, 6))
+plt.scatter(df_pH_salinity['Salinity (ppt)'], df_pH_salinity['pH'], color='blue', alpha=0.5)
+plt.title('pH in relation to Salinity')
+plt.xlabel('Salinity (ppt)')
+plt.ylabel('pH')
+plt.grid(True)
+plt.show()
+result = {'type': 'plot', 'value': 'exports/charts/b185cb5e-60d5-4ce4-bc6b-728e09f7b4fe.png'}
+        ```
+2024-05-21 00:05:08 [INFO] Executing Step 6: CodeExecution
+2024-05-21 00:05:08 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: 'exports/charts/b185cb5e-60d5-4ce4-bc6b-728e09f7b4fe.png'
+2024-05-21 00:06:31 [INFO] Question: Create a graph for pH in relation to Salinity
+2024-05-21 00:06:31 [INFO] Running PandasAI with openai LLM...
+2024-05-21 00:06:31 [INFO] Prompt ID: f6df7d57-a874-4d15-b31f-3cba5cb3ee60
+2024-05-21 00:06:31 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 00:06:31 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 00:06:31 [INFO] Executing Step 1: CacheLookup
+2024-05-21 00:06:31 [INFO] Using cached response
+2024-05-21 00:06:31 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 00:06:31 [INFO] Executing Step 2: Skipping...
+2024-05-21 00:06:31 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 00:06:31 [INFO] Executing Step 3: Skipping...
+2024-05-21 00:06:32 [INFO] Executing Step 4: CachePopulation
+2024-05-21 00:06:32 [INFO] Executing Step 4: Skipping...
+2024-05-21 00:06:32 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 00:06:32 [INFO] Saving charts to /Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png
+2024-05-21 00:06:32 [INFO] 
+Code running:
+```
+pH_salinity_data = []
+for df in dfs:
+    pH_salinity_data.extend(df[['Salinity (ppt)', 'pH']].dropna().values.tolist())
+df_pH_salinity = pd.DataFrame(pH_salinity_data, columns=['Salinity (ppt)', 'pH'])
+plt.figure(figsize=(10, 6))
+plt.scatter(df_pH_salinity['Salinity (ppt)'], df_pH_salinity['pH'], color='blue', alpha=0.5)
+plt.title('pH in relation to Salinity')
+plt.xlabel('Salinity (ppt)')
+plt.ylabel('pH')
+plt.grid(True)
+plt.show()
+result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+        ```
+2024-05-21 00:06:32 [INFO] Executing Step 6: CodeExecution
+2024-05-21 00:06:32 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'
+2024-05-21 00:12:46 [INFO] Question: Create a graph for pH in relation to Salinity
+2024-05-21 00:12:46 [INFO] Running PandasAI with openai LLM...
+2024-05-21 00:12:46 [INFO] Prompt ID: bc1fee23-2987-4c0b-a888-83d31b9ef4e6
+2024-05-21 00:12:46 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-21 00:12:46 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-21 00:12:46 [INFO] Executing Step 1: CacheLookup
+2024-05-21 00:12:46 [INFO] Using cached response
+2024-05-21 00:12:46 [INFO] Executing Step 2: PromptGeneration
+2024-05-21 00:12:46 [INFO] Executing Step 2: Skipping...
+2024-05-21 00:12:46 [INFO] Executing Step 3: CodeGenerator
+2024-05-21 00:12:46 [INFO] Executing Step 3: Skipping...
+2024-05-21 00:12:46 [INFO] Executing Step 4: CachePopulation
+2024-05-21 00:12:46 [INFO] Executing Step 4: Skipping...
+2024-05-21 00:12:46 [INFO] Executing Step 5: CodeCleaning
+2024-05-21 00:12:46 [INFO] Saving charts to /Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png
+2024-05-21 00:12:46 [INFO] 
+Code running:
+```
+pH_salinity_data = []
+for df in dfs:
+    pH_salinity_data.extend(df[['Salinity (ppt)', 'pH']].dropna().values.tolist())
+df_pH_salinity = pd.DataFrame(pH_salinity_data, columns=['Salinity (ppt)', 'pH'])
+plt.figure(figsize=(10, 6))
+plt.scatter(df_pH_salinity['Salinity (ppt)'], df_pH_salinity['pH'], color='blue', alpha=0.5)
+plt.title('pH in relation to Salinity')
+plt.xlabel('Salinity (ppt)')
+plt.ylabel('pH')
+plt.grid(True)
+plt.show()
+result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+        ```
+2024-05-21 00:12:46 [INFO] Executing Step 6: CodeExecution
+2024-05-21 00:12:46 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'

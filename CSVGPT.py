@@ -108,7 +108,11 @@ def ask_question(is_uploaded, csvgpt_instance):
             response_from_bot = csvgpt_instance.ask(text_area)
             bot = chat_container.chat_message("assistant")
             bot.write("Response")
-            bot.write(response_from_bot)
+            try:
+                bot.write(response_from_bot)
+            except Exception as e:
+                image = Image.open(response_from_bot)
+                bot.image(image)
 
 def main():
     configure_page()
@@ -132,4 +136,10 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as e:
-        st.empty()
+        # Show a plain navy background with a "We are cooking something" message in the direct middle of the page
+        st.markdown("<style>body {background-color: #0f4c81;}</style>", unsafe_allow_html=True)
+        st.markdown("""
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+            <h1 style="color: white;">We are cooking something 🍳</h1>
+        </div>
+        """, unsafe_allow_html=True)
