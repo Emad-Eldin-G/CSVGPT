@@ -87,7 +87,7 @@ class csvgpt:
         llm = OpenAI(api_token=os.environ.get("OPENAI_API_KEY"))
 
         df = pd.DataFrame(self.__dataset)
-        pAI = Agent(df, config={"verbose": True, "llm": llm, "save_charts": True, "open_charts": False, "enable_cache": True})
+        pAI = Agent(df, config={"verbose": True, "llm": llm, "save_charts": True, "save_charts_path": "datasets/", "open_charts": False, "enable_cache": True})
 
         llm_analysis_response = pAI.chat(question)
         return llm_analysis_response
