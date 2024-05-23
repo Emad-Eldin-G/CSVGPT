@@ -96,8 +96,6 @@ def ask_question(is_uploaded, csvgpt_instance):
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
-    chat_container = st.container()
-
     for message in st.session_state.messages:
         if message["sender"] == "user":
             user = chat_container.chat_message("user")
@@ -115,6 +113,8 @@ def ask_question(is_uploaded, csvgpt_instance):
         chat_container.write("### Chat with your Dataset 🤖")
         text_area = chat_container.chat_input("Chat here", disabled=True)
 
+    chat_container = st.container()
+
     if text_area:
         with st.spinner('Thinking... 🤔'):
             sleep(2)
@@ -131,7 +131,7 @@ def ask_question(is_uploaded, csvgpt_instance):
                 image = Image.open(response_from_bot)
                 bot.image(image)
             else:
-                bot.write(response_from_bot)
+                bot.write(f"{response_from_bot}")
 
 
 def main():
