@@ -23,16 +23,6 @@ class csvgpt:
         self.__LLM_Analysis()
 
 
-    @st.cache_data()
-    def __calulations(self):
-        pd_data_describe = self.__dataset.describe()
-        data_row_count = len(self.__dataset)
-        data_column_count = len(self.__dataset.columns)
-        number_of_missing_values = self.__dataset.isnull().sum().sum()
-        number_of_not_missing_values = self.__dataset.notnull().sum().sum()
-        percentage_of_missing_values = (number_of_missing_values / (number_of_missing_values + number_of_not_missing_values)) * 100
-        return pd_data_describe, data_row_count, data_column_count, number_of_missing_values, number_of_not_missing_values, percentage_of_missing_values
-
     def __shape_of_dataset(self):
         st.markdown("> Head of data")
         st.write(self.__dataset.head())
@@ -41,8 +31,12 @@ class csvgpt:
         st.write(self.__dataset.tail())
 
         st.markdown("> Shape of data")
-
-        pd_data_describe, data_row_count, data_column_count, number_of_missing_values, number_of_not_missing_values, percentage_of_missing_values = self.__calulations()
+        pd_data_describe = self.__dataset.describe()
+        data_row_count = len(self.__dataset)
+        data_column_count = len(self.__dataset.columns)
+        number_of_missing_values = self.__dataset.isnull().sum().sum()
+        number_of_not_missing_values = self.__dataset.notnull().sum().sum()
+        percentage_of_missing_values = (number_of_missing_values / (number_of_missing_values + number_of_not_missing_values)) * 100
 
         st.markdown(f"""
             - There are **{data_row_count}** rows in your dataset
