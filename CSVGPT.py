@@ -109,7 +109,7 @@ def ask_question(is_uploaded, csvgpt_instance):
             bot.write("Response")
             
             #check if the returned response is an image path
-            if response_from_bot.endswith('.png'):
+            if (response_from_bot.endswith('.png') or response_from_bot.endswith('.jpg') or response_from_bot.endswith('.jpeg')) and os.path.exists(response_from_bot):
                 image = Image.open(response_from_bot)
                 bot.image(image)
             else:
