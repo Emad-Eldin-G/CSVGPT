@@ -4958,3 +4958,868 @@ result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CS
         ```
 2024-05-21 00:12:46 [INFO] Executing Step 6: CodeExecution
 2024-05-21 00:12:46 [ERROR] Pipeline failed on step 6: [Errno 2] No such file or directory: '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'
+2024-05-23 18:23:10 [INFO] Question: What is the context of this dataset, and what is it trying to find/track based on the context of the dataset? Also format your responsee by adding ** before and after key pieces of information
+2024-05-23 18:23:10 [INFO] Running PandasAI with openai LLM...
+2024-05-23 18:23:10 [INFO] Prompt ID: c711cf00-1d9d-4c5e-8e0d-0fbabdb54d98
+2024-05-23 18:23:10 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:23:10 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:23:10 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:23:10 [INFO] Using cached response
+2024-05-23 18:23:10 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:23:10 [INFO] Executing Step 2: Skipping...
+2024-05-23 18:23:10 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:23:10 [INFO] Executing Step 3: Skipping...
+2024-05-23 18:23:10 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:23:10 [INFO] Executing Step 4: Skipping...
+2024-05-23 18:23:10 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:23:10 [INFO] 
+Code running:
+```
+data = {'Entity': ['World', 'World', 'World'], 'Code': ['OWID_WRL', 'OWID_WRL', 'OWID_WRL'], 'Year': [1961, 2008, 1994], 'Annual plastic production between 1950 and 2019': [64000000, 9000000, 17000000]}
+result = {'type': 'string', 'value': '**This dataset tracks the annual plastic production between 1950 and 2019 for the world.**'}
+        ```
+2024-05-23 18:23:10 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:23:10 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:23:10 [INFO] Answer: {'type': 'string', 'value': '**This dataset tracks the annual plastic production between 1950 and 2019 for the world.**'}
+2024-05-23 18:23:10 [INFO] Executing Step 8: ResultParsing
+2024-05-23 18:23:10 [INFO] Question: What are the quantitative columns in the dataset,
+                return the column names comma separated: column_1, column_2, column_3, ... 
+                Note: Exclude columns like date, year, etc. As it does not matter to find the min, max, mean, std, count, etc.
+                Note: Also exclude columns that are not quantitative, like ID, Code Numbers, etc.
+                In a nutshell, only include columns that are quantitative AND relevant to what a data anlyst may need.
+2024-05-23 18:23:10 [INFO] Running PandasAI with openai LLM...
+2024-05-23 18:23:10 [INFO] Prompt ID: 8bed9634-e6a6-41bb-8d64-20ed9902ea5c
+2024-05-23 18:23:10 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:23:10 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:23:10 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:23:10 [INFO] Using cached response
+2024-05-23 18:23:10 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:23:10 [INFO] Executing Step 2: Skipping...
+2024-05-23 18:23:10 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:23:10 [INFO] Executing Step 3: Skipping...
+2024-05-23 18:23:10 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:23:10 [INFO] Executing Step 4: Skipping...
+2024-05-23 18:23:10 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:23:10 [INFO] 
+Code running:
+```
+quantitative_columns = [col for col in dfs[0].select_dtypes(include='number').columns if col not in ['Year']]
+result = {'type': 'string', 'value': ','.join(quantitative_columns)}
+        ```
+2024-05-23 18:23:10 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:23:10 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:23:10 [INFO] Answer: {'type': 'string', 'value': 'Annual plastic production between 1950 and 2019'}
+2024-05-23 18:23:10 [INFO] Executing Step 8: ResultParsing
+2024-05-23 18:24:28 [INFO] Question: create a plot visualizing the annual plastic produciton across the years
+2024-05-23 18:24:28 [INFO] Running PandasAI with openai LLM...
+2024-05-23 18:24:28 [INFO] Prompt ID: fcf73e2d-f51b-4ad2-9115-d450b50d8c6c
+2024-05-23 18:24:28 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:24:28 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:24:28 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:24:28 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:24:29 [INFO] Using prompt: <dataframe>
+dfs[0]:69x4
+Entity,Code,Year,Annual plastic production between 1950 and 2019
+World,OWID_WRL,1985,5000000
+World,OWID_WRL,1981,71000000
+World,OWID_WRL,2003,44000000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ create a plot visualizing the annual plastic produciton across the years
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-23 18:24:29 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:24:33 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-23 18:24:33 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:69x4
+Entity,Code,Year,Annual plastic production between 1950 and 2019
+World,OWID_WRL,1985,5000000
+World,OWID_WRL,1981,71000000
+World,OWID_WRL,2003,44000000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ create a plot visualizing the annual plastic produciton across the years
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-05-23 18:24:33 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Combine all dataframes in dfs list
+df = pd.concat(dfs)
+
+# Plotting the annual plastic production across the years
+plt.figure(figsize=(12, 6))
+plt.plot(df['Year'], df['Annual plastic production between 1950 and 2019'], marker='o', color='b')
+plt.title('Annual Plastic Production (1950-2019)')
+plt.xlabel('Year')
+plt.ylabel('Annual Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot as a png file
+plt.savefig('annual_plastic_production.png')
+
+# Declare result variable as a dictionary containing the type and value of the plot
+result = {"type": "plot", "value": "annual_plastic_production.png"}
+            ```
+            
+2024-05-23 18:24:33 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:24:33 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:24:33 [INFO] Saving charts to /Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png
+2024-05-23 18:24:33 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+plt.figure(figsize=(12, 6))
+plt.plot(df['Year'], df['Annual plastic production between 1950 and 2019'], marker='o', color='b')
+plt.title('Annual Plastic Production (1950-2019)')
+plt.xlabel('Year')
+plt.ylabel('Annual Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+        ```
+2024-05-23 18:24:33 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:24:33 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:24:33 [INFO] Answer: {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+2024-05-23 18:24:33 [INFO] Executing Step 8: ResultParsing
+2024-05-23 18:31:25 [INFO] Question: Create a plot for the plastic production across the years
+2024-05-23 18:31:25 [INFO] Running PandasAI with openai LLM...
+2024-05-23 18:31:25 [INFO] Prompt ID: 1bf1b8d4-2fef-4458-b1c3-ee8022fd45f7
+2024-05-23 18:31:25 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:31:25 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:31:25 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:31:25 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:31:26 [INFO] Using prompt: <dataframe>
+dfs[0]:69x4
+Entity,Code,Year,Annual plastic production between 1950 and 2019
+World,OWID_WRL,2012,338000000
+World,OWID_WRL,1996,263000000
+World,OWID_WRL,2017,59000000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Create a plot for the plastic production across the years
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-23 18:31:26 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:31:31 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-23 18:31:31 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:69x4
+Entity,Code,Year,Annual plastic production between 1950 and 2019
+World,OWID_WRL,2012,338000000
+World,OWID_WRL,1996,263000000
+World,OWID_WRL,2017,59000000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Create a plot for the plastic production across the years
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-05-23 18:31:31 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Combine all dataframes in dfs list
+df = pd.concat(dfs)
+
+# Group by Year and sum the plastic production
+df_grouped = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum().reset_index()
+
+# Plotting the plastic production across the years
+plt.figure(figsize=(12, 6))
+plt.plot(df_grouped['Year'], df_grouped['Annual plastic production between 1950 and 2019'], marker='o', color='b')
+plt.title('Plastic Production Across Years')
+plt.xlabel('Year')
+plt.ylabel('Annual Plastic Production')
+plt.grid(True)
+plt.xticks(df_grouped['Year'])
+plt.tight_layout()
+
+# Save the plot as png
+plt.savefig('plastic_production_plot.png')
+
+# Declare result variable as a dictionary
+result = {"type": "plot", "value": "plastic_production_plot.png"}
+            ```
+            
+2024-05-23 18:31:31 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:31:31 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:31:31 [INFO] Saving charts to exports/charts/1bf1b8d4-2fef-4458-b1c3-ee8022fd45f7.png
+2024-05-23 18:31:31 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+df_grouped = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum().reset_index()
+plt.figure(figsize=(12, 6))
+plt.plot(df_grouped['Year'], df_grouped['Annual plastic production between 1950 and 2019'], marker='o', color='b')
+plt.title('Plastic Production Across Years')
+plt.xlabel('Year')
+plt.ylabel('Annual Plastic Production')
+plt.grid(True)
+plt.xticks(df_grouped['Year'])
+plt.tight_layout()
+plt.savefig('exports/charts/1bf1b8d4-2fef-4458-b1c3-ee8022fd45f7.png')
+result = {'type': 'plot', 'value': 'exports/charts/1bf1b8d4-2fef-4458-b1c3-ee8022fd45f7.png'}
+        ```
+2024-05-23 18:31:31 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:31:31 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:31:31 [INFO] Answer: {'type': 'plot', 'value': 'exports/charts/1bf1b8d4-2fef-4458-b1c3-ee8022fd45f7.png'}
+2024-05-23 18:31:31 [INFO] Executing Step 8: ResultParsing
+2024-05-23 18:36:21 [INFO] Question: Create a plot for plastic production over the years
+2024-05-23 18:36:21 [INFO] Running PandasAI with openai LLM...
+2024-05-23 18:36:21 [INFO] Prompt ID: 2a6fb591-529b-474f-957f-cf13b5cce2df
+2024-05-23 18:36:21 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 18:36:21 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 18:36:21 [INFO] Executing Step 1: CacheLookup
+2024-05-23 18:36:21 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 18:36:22 [INFO] Using prompt: <dataframe>
+dfs[0]:69x4
+Entity,Code,Year,Annual plastic production between 1950 and 2019
+World,OWID_WRL,1992,73000000
+World,OWID_WRL,1968,168000000
+World,OWID_WRL,1959,2000000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Create a plot for plastic production over the years
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-23 18:36:22 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 18:36:25 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-23 18:36:25 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:69x4
+Entity,Code,Year,Annual plastic production between 1950 and 2019
+World,OWID_WRL,1992,73000000
+World,OWID_WRL,1968,168000000
+World,OWID_WRL,1959,2000000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Create a plot for plastic production over the years
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-05-23 18:36:25 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Combine all dataframes in dfs list
+df = pd.concat(dfs)
+
+# Sort the data by Year
+df = df.sort_values('Year')
+
+# Plotting the data
+plt.figure(figsize=(12, 6))
+plt.plot(df['Year'], df['Annual plastic production between 1950 and 2019'], marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Annual Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot as a png file
+plt.savefig('plastic_production_over_years.png')
+
+# Declare result variable as a dictionary
+result = {"type": "plot", "value": "plastic_production_over_years.png"}
+            ```
+            
+2024-05-23 18:36:25 [INFO] Executing Step 4: CachePopulation
+2024-05-23 18:36:25 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 18:36:25 [INFO] Saving charts to exports/charts/2a6fb591-529b-474f-957f-cf13b5cce2df.png
+2024-05-23 18:36:25 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+df = df.sort_values('Year')
+plt.figure(figsize=(12, 6))
+plt.plot(df['Year'], df['Annual plastic production between 1950 and 2019'], marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Annual Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('exports/charts/2a6fb591-529b-474f-957f-cf13b5cce2df.png')
+result = {'type': 'plot', 'value': 'exports/charts/2a6fb591-529b-474f-957f-cf13b5cce2df.png'}
+        ```
+2024-05-23 18:36:25 [INFO] Executing Step 6: CodeExecution
+2024-05-23 18:36:25 [INFO] Executing Step 7: ResultValidation
+2024-05-23 18:36:25 [INFO] Answer: {'type': 'plot', 'value': 'exports/charts/2a6fb591-529b-474f-957f-cf13b5cce2df.png'}
+2024-05-23 18:36:25 [INFO] Executing Step 8: ResultParsing
+2024-05-23 19:06:11 [INFO] Question: Create a plot for plastic production over the years
+2024-05-23 19:06:11 [INFO] Running PandasAI with openai LLM...
+2024-05-23 19:06:11 [INFO] Prompt ID: 9a5c32d6-fbf7-4574-a03b-bc32b3d2bb30
+2024-05-23 19:06:11 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 19:06:11 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 19:06:11 [INFO] Executing Step 1: CacheLookup
+2024-05-23 19:06:11 [INFO] Using cached response
+2024-05-23 19:06:11 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 19:06:11 [INFO] Executing Step 2: Skipping...
+2024-05-23 19:06:11 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 19:06:11 [INFO] Executing Step 3: Skipping...
+2024-05-23 19:06:11 [INFO] Executing Step 4: CachePopulation
+2024-05-23 19:06:11 [INFO] Executing Step 4: Skipping...
+2024-05-23 19:06:11 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 19:06:11 [INFO] Saving charts to exports/charts/9a5c32d6-fbf7-4574-a03b-bc32b3d2bb30.png
+2024-05-23 19:06:11 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+df = df.sort_values('Year')
+plt.figure(figsize=(12, 6))
+plt.plot(df['Year'], df['Annual plastic production between 1950 and 2019'], marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Annual Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('exports/charts/9a5c32d6-fbf7-4574-a03b-bc32b3d2bb30.png')
+result = {'type': 'plot', 'value': 'exports/charts/9a5c32d6-fbf7-4574-a03b-bc32b3d2bb30.png'}
+        ```
+2024-05-23 19:06:11 [INFO] Executing Step 6: CodeExecution
+2024-05-23 19:06:11 [INFO] Executing Step 7: ResultValidation
+2024-05-23 19:06:11 [INFO] Answer: {'type': 'plot', 'value': 'exports/charts/9a5c32d6-fbf7-4574-a03b-bc32b3d2bb30.png'}
+2024-05-23 19:06:11 [INFO] Executing Step 8: ResultParsing
+2024-05-23 19:08:32 [INFO] Question: Create a plot of plastic production over the years
+2024-05-23 19:08:32 [INFO] Running PandasAI with openai LLM...
+2024-05-23 19:08:32 [INFO] Prompt ID: 60d49e14-ee1b-494b-b405-ea7700f6a2fa
+2024-05-23 19:08:32 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 19:08:32 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 19:08:32 [INFO] Executing Step 1: CacheLookup
+2024-05-23 19:08:32 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 19:08:33 [INFO] Using prompt: <dataframe>
+dfs[0]:69x4
+Entity,Code,Year,Annual plastic production between 1950 and 2019
+World,OWID_WRL,1982,73000000
+World,OWID_WRL,1963,137000000
+World,OWID_WRL,1964,241000000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Create a plot of plastic production over the years
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2024-05-23 19:08:33 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 19:08:37 [INFO] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-23 19:08:37 [INFO] Prompt used:
+            <dataframe>
+dfs[0]:69x4
+Entity,Code,Year,Annual plastic production between 1950 and 2019
+World,OWID_WRL,1982,73000000
+World,OWID_WRL,1963,137000000
+World,OWID_WRL,1964,241000000
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Create a plot of plastic production over the years
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2024-05-23 19:08:37 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Concatenate all dataframes in dfs list
+df = pd.concat(dfs)
+
+# Group by Year and sum the plastic production
+plastic_production_over_years = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum()
+
+# Plot the plastic production over the years
+plt.figure(figsize=(12, 6))
+plt.plot(plastic_production_over_years.index, plastic_production_over_years.values, marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Total Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot as a png file
+plt.savefig('plastic_production_over_years.png')
+
+# Declare result variable as a dictionary
+result = {"type": "plot", "value": "plastic_production_over_years.png"}
+            ```
+            
+2024-05-23 19:08:37 [INFO] Executing Step 4: CachePopulation
+2024-05-23 19:08:37 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 19:08:37 [INFO] Saving charts to /Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png
+2024-05-23 19:08:37 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+plastic_production_over_years = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum()
+plt.figure(figsize=(12, 6))
+plt.plot(plastic_production_over_years.index, plastic_production_over_years.values, marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Total Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+        ```
+2024-05-23 19:08:37 [INFO] Executing Step 6: CodeExecution
+2024-05-23 19:08:38 [INFO] Executing Step 7: ResultValidation
+2024-05-23 19:08:38 [INFO] Answer: {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+2024-05-23 19:08:38 [INFO] Executing Step 8: ResultParsing
+2024-05-23 19:11:33 [INFO] Question: Create a plot of plastic production over the years
+2024-05-23 19:11:33 [INFO] Running PandasAI with openai LLM...
+2024-05-23 19:11:33 [INFO] Prompt ID: 01c649f6-c22a-4bcb-bbb6-553a7cfb9bfc
+2024-05-23 19:11:33 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 19:11:33 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 19:11:33 [INFO] Executing Step 1: CacheLookup
+2024-05-23 19:11:33 [INFO] Using cached response
+2024-05-23 19:11:33 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 19:11:33 [INFO] Executing Step 2: Skipping...
+2024-05-23 19:11:33 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 19:11:33 [INFO] Executing Step 3: Skipping...
+2024-05-23 19:11:33 [INFO] Executing Step 4: CachePopulation
+2024-05-23 19:11:33 [INFO] Executing Step 4: Skipping...
+2024-05-23 19:11:33 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 19:11:33 [INFO] Saving charts to charts/01c649f6-c22a-4bcb-bbb6-553a7cfb9bfc.png
+2024-05-23 19:11:33 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+plastic_production_over_years = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum()
+plt.figure(figsize=(12, 6))
+plt.plot(plastic_production_over_years.index, plastic_production_over_years.values, marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Total Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('charts/01c649f6-c22a-4bcb-bbb6-553a7cfb9bfc.png')
+result = {'type': 'plot', 'value': 'charts/01c649f6-c22a-4bcb-bbb6-553a7cfb9bfc.png'}
+        ```
+2024-05-23 19:11:33 [INFO] Executing Step 6: CodeExecution
+2024-05-23 19:11:33 [INFO] Executing Step 7: ResultValidation
+2024-05-23 19:11:33 [INFO] Answer: {'type': 'plot', 'value': 'charts/01c649f6-c22a-4bcb-bbb6-553a7cfb9bfc.png'}
+2024-05-23 19:11:33 [INFO] Executing Step 8: ResultParsing
+2024-05-23 19:14:23 [INFO] Question: Create a plot of plastic production over the years
+2024-05-23 19:14:23 [INFO] Running PandasAI with openai LLM...
+2024-05-23 19:14:23 [INFO] Prompt ID: 7098c6e5-4ebb-4187-9743-8194027614c5
+2024-05-23 19:14:23 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 19:14:23 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 19:14:23 [INFO] Executing Step 1: CacheLookup
+2024-05-23 19:14:23 [INFO] Using cached response
+2024-05-23 19:14:23 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 19:14:23 [INFO] Executing Step 2: Skipping...
+2024-05-23 19:14:23 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 19:14:23 [INFO] Executing Step 3: Skipping...
+2024-05-23 19:14:23 [INFO] Executing Step 4: CachePopulation
+2024-05-23 19:14:23 [INFO] Executing Step 4: Skipping...
+2024-05-23 19:14:23 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 19:14:23 [INFO] Saving charts to exports/charts/7098c6e5-4ebb-4187-9743-8194027614c5.png
+2024-05-23 19:14:23 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+plastic_production_over_years = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum()
+plt.figure(figsize=(12, 6))
+plt.plot(plastic_production_over_years.index, plastic_production_over_years.values, marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Total Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('exports/charts/7098c6e5-4ebb-4187-9743-8194027614c5.png')
+result = {'type': 'plot', 'value': 'exports/charts/7098c6e5-4ebb-4187-9743-8194027614c5.png'}
+        ```
+2024-05-23 19:14:23 [INFO] Executing Step 6: CodeExecution
+2024-05-23 19:14:23 [INFO] Executing Step 7: ResultValidation
+2024-05-23 19:14:23 [INFO] Answer: {'type': 'plot', 'value': 'exports/charts/7098c6e5-4ebb-4187-9743-8194027614c5.png'}
+2024-05-23 19:14:23 [INFO] Executing Step 8: ResultParsing
+2024-05-23 19:20:35 [INFO] Question: Create a plot of plastic production over the years
+2024-05-23 19:20:35 [INFO] Running PandasAI with openai LLM...
+2024-05-23 19:20:35 [INFO] Prompt ID: e8d8b5cc-069b-45ec-ac4f-25f60030ca46
+2024-05-23 19:20:35 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 19:20:35 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 19:20:35 [INFO] Executing Step 1: CacheLookup
+2024-05-23 19:20:35 [INFO] Using cached response
+2024-05-23 19:20:35 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 19:20:35 [INFO] Executing Step 2: Skipping...
+2024-05-23 19:20:35 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 19:20:35 [INFO] Executing Step 3: Skipping...
+2024-05-23 19:20:35 [INFO] Executing Step 4: CachePopulation
+2024-05-23 19:20:35 [INFO] Executing Step 4: Skipping...
+2024-05-23 19:20:35 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 19:20:35 [INFO] Saving charts to /Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png
+2024-05-23 19:20:35 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+plastic_production_over_years = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum()
+plt.figure(figsize=(12, 6))
+plt.plot(plastic_production_over_years.index, plastic_production_over_years.values, marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Total Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+        ```
+2024-05-23 19:20:35 [INFO] Executing Step 6: CodeExecution
+2024-05-23 19:20:36 [INFO] Executing Step 7: ResultValidation
+2024-05-23 19:20:36 [INFO] Answer: {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+2024-05-23 19:20:36 [INFO] Executing Step 8: ResultParsing
+2024-05-23 19:22:52 [INFO] Question: Create a plot of plastic production over the years
+2024-05-23 19:22:52 [INFO] Running PandasAI with openai LLM...
+2024-05-23 19:22:52 [INFO] Prompt ID: 3440bc00-457f-47b3-aa70-f7ccf09f7b93
+2024-05-23 19:22:52 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 19:22:52 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 19:22:52 [INFO] Executing Step 1: CacheLookup
+2024-05-23 19:22:52 [INFO] Using cached response
+2024-05-23 19:22:52 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 19:22:52 [INFO] Executing Step 2: Skipping...
+2024-05-23 19:22:52 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 19:22:52 [INFO] Executing Step 3: Skipping...
+2024-05-23 19:22:52 [INFO] Executing Step 4: CachePopulation
+2024-05-23 19:22:52 [INFO] Executing Step 4: Skipping...
+2024-05-23 19:22:52 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 19:22:52 [INFO] Saving charts to /Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png
+2024-05-23 19:22:52 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+plastic_production_over_years = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum()
+plt.figure(figsize=(12, 6))
+plt.plot(plastic_production_over_years.index, plastic_production_over_years.values, marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Total Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+        ```
+2024-05-23 19:22:52 [INFO] Executing Step 6: CodeExecution
+2024-05-23 19:22:52 [INFO] Executing Step 7: ResultValidation
+2024-05-23 19:22:52 [INFO] Answer: {'type': 'plot', 'value': '/Users/omda/Desktop/Programming/Streamlit/CSVGPT/CSVGPT/exports/charts/temp_chart.png'}
+2024-05-23 19:22:52 [INFO] Executing Step 8: ResultParsing
+2024-05-23 19:24:54 [INFO] Question: Create a plot of plastic production over the years
+2024-05-23 19:24:54 [INFO] Running PandasAI with openai LLM...
+2024-05-23 19:24:54 [INFO] Prompt ID: f55da8c1-a3c6-40d1-b1fc-f9820a9a3722
+2024-05-23 19:24:54 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 19:24:54 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 19:24:54 [INFO] Executing Step 1: CacheLookup
+2024-05-23 19:24:54 [INFO] Using cached response
+2024-05-23 19:24:54 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 19:24:54 [INFO] Executing Step 2: Skipping...
+2024-05-23 19:24:54 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 19:24:54 [INFO] Executing Step 3: Skipping...
+2024-05-23 19:24:54 [INFO] Executing Step 4: CachePopulation
+2024-05-23 19:24:54 [INFO] Executing Step 4: Skipping...
+2024-05-23 19:24:54 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 19:24:54 [INFO] Saving charts to exports/charts/f55da8c1-a3c6-40d1-b1fc-f9820a9a3722.png
+2024-05-23 19:24:54 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+plastic_production_over_years = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum()
+plt.figure(figsize=(12, 6))
+plt.plot(plastic_production_over_years.index, plastic_production_over_years.values, marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Total Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('exports/charts/f55da8c1-a3c6-40d1-b1fc-f9820a9a3722.png')
+result = {'type': 'plot', 'value': 'exports/charts/f55da8c1-a3c6-40d1-b1fc-f9820a9a3722.png'}
+        ```
+2024-05-23 19:24:54 [INFO] Executing Step 6: CodeExecution
+2024-05-23 19:24:54 [INFO] Executing Step 7: ResultValidation
+2024-05-23 19:24:54 [INFO] Answer: {'type': 'plot', 'value': 'exports/charts/f55da8c1-a3c6-40d1-b1fc-f9820a9a3722.png'}
+2024-05-23 19:24:54 [INFO] Executing Step 8: ResultParsing
+2024-05-23 19:25:34 [INFO] Question: Create a plot of plastic production over the years
+2024-05-23 19:25:34 [INFO] Running PandasAI with openai LLM...
+2024-05-23 19:25:34 [INFO] Prompt ID: 9b4ca30e-3abf-498f-905f-71f260b88d9d
+2024-05-23 19:25:34 [INFO] Executing Pipeline: GenerateChatPipeline
+2024-05-23 19:25:34 [INFO] Executing Step 0: ValidatePipelineInput
+2024-05-23 19:25:34 [INFO] Executing Step 1: CacheLookup
+2024-05-23 19:25:34 [INFO] Using cached response
+2024-05-23 19:25:34 [INFO] Executing Step 2: PromptGeneration
+2024-05-23 19:25:34 [INFO] Executing Step 2: Skipping...
+2024-05-23 19:25:34 [INFO] Executing Step 3: CodeGenerator
+2024-05-23 19:25:34 [INFO] Executing Step 3: Skipping...
+2024-05-23 19:25:34 [INFO] Executing Step 4: CachePopulation
+2024-05-23 19:25:34 [INFO] Executing Step 4: Skipping...
+2024-05-23 19:25:34 [INFO] Executing Step 5: CodeCleaning
+2024-05-23 19:25:34 [INFO] Saving charts to exports/charts/9b4ca30e-3abf-498f-905f-71f260b88d9d.png
+2024-05-23 19:25:34 [INFO] 
+Code running:
+```
+df = pd.concat(dfs)
+plastic_production_over_years = df.groupby('Year')['Annual plastic production between 1950 and 2019'].sum()
+plt.figure(figsize=(12, 6))
+plt.plot(plastic_production_over_years.index, plastic_production_over_years.values, marker='o', color='b')
+plt.title('Plastic Production Over the Years')
+plt.xlabel('Year')
+plt.ylabel('Total Plastic Production')
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig('exports/charts/9b4ca30e-3abf-498f-905f-71f260b88d9d.png')
+result = {'type': 'plot', 'value': 'exports/charts/9b4ca30e-3abf-498f-905f-71f260b88d9d.png'}
+        ```
+2024-05-23 19:25:34 [INFO] Executing Step 6: CodeExecution
+2024-05-23 19:25:34 [INFO] Executing Step 7: ResultValidation
+2024-05-23 19:25:34 [INFO] Answer: {'type': 'plot', 'value': 'exports/charts/9b4ca30e-3abf-498f-905f-71f260b88d9d.png'}
+2024-05-23 19:25:34 [INFO] Executing Step 8: ResultParsing
