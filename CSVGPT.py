@@ -98,13 +98,15 @@ def ask_question(is_uploaded, csvgpt_instance):
 
     for message in st.session_state.messages:
         if message["sender"] == "user":
-            user = chat_container.chat_message("user")
+            user = responses_container.chat_message("user")
             user.write("You")
             user.write(message["content"])
         else:
-            bot = chat_container.chat_message("assistant")
+            bot = responses_container.chat_message("assistant")
             bot.write("Response")
             bot.write(message["content"])
+
+    chat_container = st.container()
 
     if is_uploaded:
         chat_container.write("### Chat with your Dataset 🤖")
@@ -113,7 +115,7 @@ def ask_question(is_uploaded, csvgpt_instance):
         chat_container.write("### Chat with your Dataset 🤖")
         text_area = chat_container.chat_input("Chat here", disabled=True)
 
-    chat_container = st.container()
+    responses_container = st.container()
 
     if text_area:
         with st.spinner('Thinking... 🤔'):
