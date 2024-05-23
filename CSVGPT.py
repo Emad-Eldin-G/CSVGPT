@@ -93,7 +93,21 @@ def analyze_dataset(is_uploaded, uploaded_file):
 
 
 def ask_question(is_uploaded, csvgpt_instance):
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
     chat_container = st.container()
+
+    for message in st.session_state.messages:
+        if message["sender"] == "user":
+            user = chat_container.chat_message("user")
+            user.write("You")
+            user.write(message["content"])
+        else:
+            bot = chat_container.chat_message("assistant")
+            bot.write("Response")
+            bot.write(message["content"])
+
     if is_uploaded:
         chat_container.write("### Chat with your Dataset 🤖")
         text_area = chat_container.chat_input("Chat here", disabled=False)
@@ -105,6 +119,10 @@ def ask_question(is_uploaded, csvgpt_instance):
         with st.spinner('Thinking... 🤔'):
             sleep(2)
             response_from_bot = csvgpt_instance.ask(text_area)
+
+            st.session_state.messages.append({"content": text_area, "sender": "user"})
+            st.session_state.messages.append({"content": response_from_bot, "sender": "assistant"})
+
             bot = chat_container.chat_message("assistant")
             bot.write("Response")
             
@@ -114,6 +132,7 @@ def ask_question(is_uploaded, csvgpt_instance):
                 bot.image(image)
             else:
                 bot.write(response_from_bot)
+
 
 def main():
     configure_page()
