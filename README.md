@@ -11,4 +11,5 @@ Everyone can be a data pro with CSVGPT
 
 
 
-<img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/csvgpt-header.png" width=auto />
+<img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/csvgpt-header.png" width=auto />  
+Check it out now: https://github.com/Emad-Eldin-G/CSVGPT/blob/main/csvgpt-header.png 🚀
