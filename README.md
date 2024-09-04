@@ -7,4 +7,8 @@ Everyone can be a data pro with CSVGPT
 
 
 ### Powered by
-<img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/static/streamlit.png" width=50>   <img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/static/pandasai.png" width=50>   <img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/static/pandas.png" width=50>   <img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/static/numpy.png" width=50>
+<img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/static/streamlit.png" width=50>   <img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/static/pandasai.png" width=50>   <img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/static/pandas.png" width=50>   <img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/static/numpy.png" width=50>  
+
+
+
+<img src="https://github.com/Emad-Eldin-G/CSVGPT/blob/main/csvgpt-header.png" width=auto />
